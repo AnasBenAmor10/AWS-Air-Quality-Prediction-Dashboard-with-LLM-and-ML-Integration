@@ -23,6 +23,7 @@ This cloud-based solution monitors, analyzes, forecasts air quality and generate
      - [Step 1: Set Grafana Variables](#⚙️-step-1-set-grafana-variables)
      - [Step 2: Load the LLM](#📥-step-2-load-the-llm)
      - [Step 3: Setup ngrok](#🌐-step-3-setup-ngrok)
+  3. [Model Training ](#⚙️-model-training)
 - [🎯 Results](#🎯-results)
 - [🤝 Contributing](#🤝-contributing)
 
@@ -290,8 +291,6 @@ To successfully set up and deploy this project, you will need the following:
   <img alt="Data Visualisation" src="Images/catalogue-light.png">
 </picture>
 
-Here’s a more polished and professional version of your Step 6 in the README file:
-
 ---
 
 #### 📊 Step 6: Query Data Using Athena
@@ -358,6 +357,37 @@ To visualize the air pollution data, we installed Grafana on an `t2.medium` EC2 
 1. After configuring the Athena data source, create a new dashboard in Grafana.
 2. Add panels for visualizing weather data.
 3. Configure queries for each panel.
+
+### ⚙️ Model Training
+
+To predict air quality indices (AQI) based on weather data, we have developed a deep learning model using TensorFlow/Keras. The approach focuses on capturing relationships between weather factors (e.g., temperature, humidity, wind speed) and air pollution metrics (e.g., NO2, PM2.5, SO2) to estimate AQI levels.
+
+#### 🚀 Approach
+
+1. **Model Architecture**
+
+   - Designed to capture complex relationships between weather conditions and air quality metrics.
+   - Utilizes layers such as dense, convolutional, and recurrent networks based on the data characteristics.
+
+2. **Training Strategy**
+   - **EarlyStopping**: Helps prevent overfitting by halting training once validation performance stagnates.
+   - **ModelCheckpoint**: Saves the best-performing model during training, ensuring the optimal model is retained.
+   - **ReduceLROnPlateau**: Dynamically adjusts the learning rate to help the model converge more effectively.
+
+#### 🔧 Model Configuration
+
+- **Training Parameters**:
+
+  - Epochs: 100
+  - Batch Size: 16
+  - Validation Split: `X_val`, `y_val`
+
+- **Callbacks**:
+  - **EarlyStopping**: Monitors `val_accuracy` and stops training when performance stops improving (patience=20, min_delta=0.0001).
+  - **ModelCheckpoint**: Saves the best model to `/kaggle/working/best.keras` based on `val_accuracy`.
+  - **ReduceLROnPlateau**: Adjusts the learning rate to `0.000001` when performance stagnates (factor=0.4, patience=5).
+
+This training strategy ensures robust model learning and optimal performance for AQI prediction from weather data.
 
 ### 🧠 LLM Integration
 
@@ -471,3 +501,7 @@ If you have suggestions for improving the pipeline or visualizations, feel free 
 2. Make your changes and ensure that new code adheres to the project's code standards.
 3. **Test** your changes.
 4. Create a **pull request** with a detailed description of your changes.
+
+```
+
+```
