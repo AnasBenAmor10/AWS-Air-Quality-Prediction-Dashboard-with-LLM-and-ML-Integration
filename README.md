@@ -290,8 +290,6 @@ To successfully set up and deploy this project, you will need the following:
   <img alt="Data Visualisation" src="Images/catalogue-light.png">
 </picture>
 
-Here’s a more polished and professional version of your Step 6 in the README file:
-
 ---
 
 #### 📊 Step 6: Query Data Using Athena
