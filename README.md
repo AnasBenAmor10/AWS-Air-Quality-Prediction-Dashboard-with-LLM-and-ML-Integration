@@ -408,7 +408,7 @@ To predict air quality indices (AQI) based on weather data, we have developed a 
 
 - **Callbacks**:
   - **EarlyStopping**: Monitors `val_accuracy` and stops training when performance stops improving (patience=20, min_delta=0.0001).
-  - **ModelCheckpoint**: Saves the best model to `/kaggle/working/best.keras` based on `val_accuracy`.
+  - **ModelCheckpoint**: Saves the best model `best.keras` based on `val_accuracy`.
   - **ReduceLROnPlateau**: Adjusts the learning rate to `0.000001` when performance stagnates (factor=0.4, patience=5).
 
 This training strategy ensures robust model learning and optimal performance for AQI prediction from weather data.
