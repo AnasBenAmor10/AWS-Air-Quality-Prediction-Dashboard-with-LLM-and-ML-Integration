@@ -27,9 +27,13 @@ This cloud-based solution monitors, analyzes, forecasts air quality and generate
 - [🎯 Results](#🎯-results)
 - [🤝 Contributing](#🤝-contributing)
 
+---
+
 ## 📌 Overview
 
 This project is designed to collect, process, and visualize real-time weather data by leveraging AWS services, OpenWeather API, and machine learning tools. The pipeline automates the retrieval of weather data, stores it efficiently in the cloud, processes it for analytics, and makes it accessible for real-time visualization and predictive analysis.
+
+---
 
 ### ⭐ Key Features:
 
@@ -61,6 +65,8 @@ Large Language Models (LLMs) are used for generating reports and gaining deeper 
 
 The entire pipeline is automated, allowing for continuous updates, error handling, and scalability, ensuring that the system can handle a large volume of weather data efficiently.
 
+---
+
 ## 📁 Repository Structure:
 
 ```bash
@@ -77,6 +83,8 @@ The entire pipeline is automated, allowing for continuous updates, error handlin
       ├── countries.csv
       └── data_schema.json
 ```
+
+---
 
 ## 🏗️ Architecture
 
@@ -100,6 +108,8 @@ The following AWS services are used in the architecture:
   <source media="(prefers-color-scheme: light)" srcset="Images/Architecture-light.png">
   <img alt="Architecture Diagram" src="Images/Architecture-light.png">
 </picture>
+
+---
 
 ## ⚙️ Prerequisites
 
@@ -197,7 +207,11 @@ To successfully set up and deploy this project, you will need the following:
   ```
 - Ensure you have access to the `meta-llama/Llama-3.2-3B-Instruct` model through Hugging Face.
 
+---
+
 ## 🚀 Deployment Steps
+
+---
 
 ### 🔧 Data Pipeline Setup
 
@@ -235,11 +249,15 @@ To successfully set up and deploy this project, you will need the following:
 
 - It is necessary to have an S3 bucket named `useful-data-bucket` that containes the csv file `countries.csv`.
 
+---
+
 #### 🔗 Step 2: Configure Kinesis Data Streams
 
 1. Navigate to the **Kinesis** section in AWS Console and Click on **Create stream**.
 2. Name your stream (e.g., `airpollution_data`), and define the number of shards based on your data volume or choose the `On-Demand` option.
 3. Once the stream is created, ensure the EC2 instance has the proper IAM role to send data to Kinesis.
+
+---
 
 #### ⚡ Step 3: Lambda Function Setup
 
@@ -258,6 +276,8 @@ To successfully set up and deploy this project, you will need the following:
   <img alt="Data Visualisation" src="Images/lambda-light.png" >
 </picture>
 
+---
+
 #### 🗂️ Step 4: Store Data in S3
 
 1. Create an S3 bucket:
@@ -265,6 +285,8 @@ To successfully set up and deploy this project, you will need the following:
    - Set permissions and configure the bucket to store the processed weather data.
    - The data is stored in folders, each folder designating a specific country and its corresponding data.
 2. Ensure that the Lambda function has the appropriate IAM role to write data to S3.
+
+---
 
 #### Step 5: Set up AWS Glue Crawlers and Tables
 
@@ -358,6 +380,8 @@ To visualize the air pollution data, we installed Grafana on an `t2.medium` EC2 
 2. Add panels for visualizing weather data.
 3. Configure queries for each panel.
 
+---
+
 ### ⚙️ Model Training
 
 To predict air quality indices (AQI) based on weather data, we have developed a deep learning model using TensorFlow/Keras. The approach focuses on capturing relationships between weather factors (e.g., temperature, humidity, wind speed) and air pollution metrics (e.g., NO2, PM2.5, SO2) to estimate AQI levels.
@@ -388,6 +412,8 @@ To predict air quality indices (AQI) based on weather data, we have developed a 
   - **ReduceLROnPlateau**: Adjusts the learning rate to `0.000001` when performance stagnates (factor=0.4, patience=5).
 
 This training strategy ensures robust model learning and optimal performance for AQI prediction from weather data.
+
+---
 
 ### 🧠 LLM Integration
 
@@ -444,6 +470,8 @@ This section demonstrates how to integrate a Large Language Model (LLM) into the
      ```bash
      Forwarding    https://<unique-id>.ngrok.io -> localhost:5000
      ```
+
+---
 
 ## 🎯 Results
 
