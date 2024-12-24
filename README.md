@@ -214,7 +214,8 @@ To successfully set up and deploy this project, you will need the following:
     ```
 4.  Create a Python script (`fetch_data.py`) to fetch data from the OpenWeather API.
     It is important to configure the Kinesis client before fetching the data and set up the AWS Credentials:
-    ```python
+
+    ````python
     aws_region = "your-region-here"
     aws_access_key_id="aws-access-id"
     aws_secret_access_key="your-secret-access-keye-here"
@@ -227,6 +228,7 @@ To successfully set up and deploy this project, you will need the following:
             aws_secret_access_key=aws_secret_access_key,
             aws_session_token=aws_session_token)
         ```
+    ````
 
 ##### Note:
 
@@ -249,6 +251,12 @@ To successfully set up and deploy this project, you will need the following:
    ```
 5. Use the Lambda function (`data_transformation.py`) to format data and write it into the S3 bucket.
 
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="Images/lambda-dark.png">
+  <source media="(prefers-color-scheme: light)" srcset="Images/lambda-light.png">
+  <img alt="Data Visualisation" src="Images/lambda-light.png" >
+</picture>
+
 #### 🗂️ Step 4: Store Data in S3
 
 1. Create an S3 bucket:
@@ -257,24 +265,55 @@ To successfully set up and deploy this project, you will need the following:
    - The data is stored in folders, each folder designating a specific country and its corresponding data.
 2. Ensure that the Lambda function has the appropriate IAM role to write data to S3.
 
-#### 🔍 Step 5: Set up AWS Glue Crawlers and Tables
+#### Step 5: Set up AWS Glue Crawlers and Tables
 
-1. Go to **AWS Glue Databases** and create a new Database with a unique name (e.g. `airquality_base`).
-2. Go to **AWS Glue** and create a new Crawler.
-3. - Define the source as the S3 bucket where weather data is stored.
-   - Set the `airquality_base` database as the output.
-   - Set up the crawler to run on a scheduled basis (e.g., every hour) to keep the Glue Catalog up-to-date.
-4. After running the whole pipeline, navigate to the AWS Glue Table schema and make sure it is identical to `data_schema.json` or update it.
+1. Go to AWS Glue Databases and create a new Database with a unique name (e.g., `airquality_base`).
+2. Go to AWS Glue and create a new Crawler.
+3. Define the source as the S3 bucket where weather data is stored.
+4. Set the `airquality_base` database as the output.
+5. Set up the crawler to run on a scheduled basis (e.g., every hour) to keep the Glue Catalog up-to-date.
+6. After running the whole pipeline, navigate to the AWS Glue Table schema and make sure it is identical to `data_schema.json` or update it.
+
+##### Crawler Running Successfully
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="Images/crawler-dark.png">
+  <source media="(prefers-color-scheme: light)" srcset="Images/crawler-light.png">
+  <img alt="Data Visualisation" src="Images/crawler-light.png">
+</picture>
+
+##### AWS Glue Table Catalog Created
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="Images/catalogue-dark.png">
+  <source media="(prefers-color-scheme: light)" srcset="Images/catalogue-light.png">
+  <img alt="Data Visualisation" src="Images/catalogue-light.png">
+</picture>
+
+Here’s a more polished and professional version of your Step 6 in the README file:
+
+---
 
 #### 📊 Step 6: Query Data Using Athena
 
-1. In the **Athena** console, create a new database (for query results storage).
-2. Define a table that references the Glue cataloged data in S3.
-3. Run SQL queries to analyze the air quality data.
+1. Access the **Athena** console and create a new database to store query results.
+2. Define a table that references the Glue-cataloged data stored in S3.
+3. Execute SQL queries to analyze the air quality data.  
    Example query:
+
    ```sql
-   SELECT * FROM "airquality_base"."airquality_databucket" limit 30;
+   SELECT * FROM "airquality_base"."airquality_databucket" LIMIT 30;
    ```
+
+   The query result visualization should appear as follows:
+
+   <picture>
+     <source media="(prefers-color-scheme: dark)" srcset="Images/athena-dark.png">
+     <source media="(prefers-color-scheme: light)" srcset="Images/athena-light.png">
+     <img alt="Data Visualization" src="Images/athena-light.png">
+   </picture>
+
+---
 
 #### 📈 Step 7: Visualize with Grafana
 
@@ -378,61 +417,19 @@ This section demonstrates how to integrate a Large Language Model (LLM) into the
 
 ## 🎯 Results
 
-### Data Visualisation Dashboard
+### Data Visualization Dashboard
 
-#### 1. Total Data Count
-
-- **Description**: Displays the total number of air quality data points.
-
-#### 2. Air Quality Unique Count
-
-- **Visualization**: Pie chart
-- **Categories**:
-  - Fair
-  - Good
-  - Poor
-  - Very Poor
-  - Moderate
-
-#### 3. Average Air Quality Index by Continent
-
-- **Visualization**: Bar chart
-
-#### 4. Metric Impact
-
-- **Visualization**: Scatter plot
-- **Metrics**: Shows the impact of pollutants on AQI values.
-
-#### 5. Top 10 Most Polluted Countries
-
-- **Very Poor Regions**
-
-#### 6. Top 5 Cleanest Countries
-
-- **Good Regions**
-
-#### 7. Value Ranges
-
-- **Pollutant Levels**
-
-#### 8. Air Pollution World Map
-
-- **Visualization**: Global map with color-coded air quality labels:
-  - Good
-  - Fair
-  - Poor
-  - Very Poor
-
-#### 9. Detailed Data Tooltip
-
-- **Information Displayed on Hover**:
-  - **Timestamp**
-  - **Region**
-  - **Continent**
-  - **Longitude**
-  - **Latitude**
-  - **AQI Quality**
-  - **Pollutant Levels**
+| Metric                                        | Description                                                                                   | Visualization |
+| --------------------------------------------- | --------------------------------------------------------------------------------------------- | ------------- |
+| **1. Total Data Count**                       | Displays the total number of air quality data points.                                         | Total Number  |
+| **2. Air Quality Unique Count**               | Pie chart displaying categories: Fair, Good, Poor, Very Poor, Moderate.                       | Pie chart     |
+| **3. Average Air Quality Index by Continent** | Bar chart showing average AQI by continent.                                                   | Bar chart     |
+| **4. Metric Impact**                          | Scatter plot showing the impact of pollutants on AQI values.                                  | Scatter plot  |
+| **5. Top 10 Most Polluted Countries**         | List of top regions with very poor air quality.                                               |               |
+| **6. Top 5 Cleanest Countries**               | List of top regions with good air quality.                                                    |               |
+| **7. Value Ranges**                           | Display of pollutant levels categorized into ranges.                                          | Range values  |
+| **8. Air Pollution World Map**                | Global map with color-coded air quality labels: Good, Fair, Poor, Very Poor.                  | Global map    |
+| **9. Detailed Data Tooltip**                  | Information displayed on hover (timestamp, region, continent, AQI quality, pollutant levels). | Tooltip       |
 
 **Purpose**: This dashboard provides a comprehensive overview of global air quality, offering insights into pollution levels, geographic distribution, and identifying clean and polluted regions.
 
@@ -449,25 +446,12 @@ This section demonstrates how to integrate a Large Language Model (LLM) into the
 
 ### Air Quality Forecast and LLM-Generated Report Dashboard
 
-#### Country Selection
-
-- **Dropdown** to select a country for air quality predictions.
-
-#### Metric Predictions for Selected Country
-
-- **Visualization**: Line graph showing predictions for AQI and specific pollutants for the coming year.
-
-#### Mean Values
-
-- **Visualization**: Displays mean pollutant levels (Global_AQI, no2, o3, pm10, pm2_5, so2).
-
-#### Report Description
-
-- **Details**:
-  - Overview of air quality for the selected country.
-  - Highlights of AQI levels compared to WHO recommendations.
-  - Describes pollutants and their health implications.
-  - Identifies key pollution sources and trends.
+| Metric                                      | Description                                                                                                                                                                                                   |
+| ------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Country Selection**                       | Dropdown to select a country for air quality predictions.                                                                                                                                                     |
+| **Metric Predictions for Selected Country** | Line graph showing predictions for AQI and specific pollutants for the coming year.                                                                                                                           |
+| **Mean Values**                             | Displays mean pollutant levels (Global_AQI, NO2, O3, PM10, PM2.5, SO2).                                                                                                                                       |
+| **Report Description**                      | Overview of air quality for the selected country. Highlights AQI levels compared to WHO recommendations, describes pollutants and their health implications, and identifies key pollution sources and trends. |
 
 **Purpose**: This dashboard includes predictive analysis and detailed reports for specific countries.
 
