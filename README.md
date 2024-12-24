@@ -529,7 +529,3 @@ If you have suggestions for improving the pipeline or visualizations, feel free 
 2. Make your changes and ensure that new code adheres to the project's code standards.
 3. **Test** your changes.
 4. Create a **pull request** with a detailed description of your changes.
-
-```
-
-```
