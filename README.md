@@ -73,6 +73,10 @@ The entire pipeline is automated, allowing for continuous updates, error handlin
   .
   ├── Data Fetch
   │   └── fetch_data.py
+  │─ Grafana
+  │   └── data_schema.json
+  │─ Training
+  │   └── airqualityprediction.ipynb
   ├── Images
   ├── Lambda_function
   │   └── data_transformation.py
@@ -379,6 +383,8 @@ To visualize the air pollution data, we installed Grafana on an `t2.medium` EC2 
 1. After configuring the Athena data source, create a new dashboard in Grafana.
 2. Add panels for visualizing weather data.
 3. Configure queries for each panel.
+
+   If you want to implement my dashboard directly, take the data_schema.json file from the Grafana folder in my repository and add it to your settings for quick deployment. 📂⚙️
 
 ---
 
