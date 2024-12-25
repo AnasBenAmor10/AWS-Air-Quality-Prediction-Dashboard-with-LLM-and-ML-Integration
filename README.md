@@ -1,4 +1,4 @@
-# 🌬️ AWS Real-Time Air Quality Monitoring, Prediction, and LLM-Enhanced Reporting
+# 🌬️ AWS-Air-Quality-Prediction-Dashboard-with-LLM-and-ML-Integration
 
 ## 📊 Description
 
