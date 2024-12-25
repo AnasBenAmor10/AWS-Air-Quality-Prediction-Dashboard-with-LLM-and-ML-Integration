@@ -7,8 +7,8 @@ This cloud-driven solution leverages real-time and historical data from the Open
 ## 📑 Table of Contents
 
 - [📌 Overview](#📌-overview)
-- [📁 Repository Structure](#📁-repository-structure)
 - [🏗️ Architecture](#🏗️-architecture)
+- [📁 Repository Structure](#📁-repository-structure)
 - [⚙️ Prerequisites](#⚙️-prerequisites)
 - [🚀 Deployment Steps](#🚀-deployment-steps)
   1. [Data Pipeline Setup](#🔧-data-pipeline-setup)
@@ -35,58 +35,35 @@ This project harnesses AWS services, the OpenWeather API, and machine learning t
 
 ---
 
-### ⭐ Key Features:
+### 🚀 **Key Features**
 
-#### 1. 📡 Real-time Data Ingestion:
+#### 📡 **1. Real-Time Data Ingestion**
 
-Weather data is continuously fetched from the OpenWeather API using an EC2 instance, ensuring up-to-date weather information.
+Leverage EC2 instances to fetch real-time weather data continuously from the OpenWeather API, ensuring up-to-date and reliable information.
 
-#### 2. 🔄 Data Streaming & Processing:
+#### 🔄 **2. Scalable Data Streaming & Processing**
 
-The data is streamed through Amazon Kinesis Data Streams, providing a scalable way to handle incoming data in real time. AWS Lambda functions are triggered to process the data, transforming it into a structured format and storing it in Amazon S3.
+Stream data seamlessly through Amazon Kinesis Data Streams for efficient real-time handling. AWS Lambda functions process the data, converting it into a structured format before storing it securely in Amazon S3.
 
-#### 3. 🔧 Data Transformation & Cataloging:
+#### 🔧 **3. Smart Data Transformation & Cataloging**
 
-AWS Glue Crawlers automatically discover and catalog the processed data, while Amazon Athena allows users to run SQL queries on the stored data. This makes the data easily accessible for reporting and analysis.
+Automatically discover and catalog processed data with AWS Glue Crawlers. Utilize Amazon Athena for running SQL queries, enabling effortless reporting and data analysis.
 
-#### 4. 📊 Visualization with Grafana:
+#### 📊 **4. Insightful Visualization with Grafana**
 
-Grafana is integrated to create dashboards that visualize key metrics like temperature, humidity, and weather conditions. This enables users to monitor trends and gain insights into the data in real time.
+Integrate Grafana to craft interactive dashboards that showcase key metrics such as temperature, humidity, and weather trends, offering real-time insights and monitoring.
 
-#### 5. 🤖 Machine Learning:
+#### 🤖 **5. Advanced Machine Learning Predictions**
 
-AWS SageMaker is used to train and deploy machine learning models for weather predictions, such as forecasting temperature or predicting weather conditions. These models are exposed through an API Gateway and can be accessed for inference.
+Use AWS SageMaker to develop, train, and deploy machine learning models. These models predict weather patterns, such as temperature forecasts or specific conditions, accessible via an API Gateway for on-demand inference.
 
-#### 6. 🧠 Large Language Model (LLM) Integration:
+#### 🧠 **6. Enhanced Insights with LLM Integration**
 
-Large Language Models (LLMs) are used for generating reports and gaining deeper insights into the weather data, making the information more accessible and understandable for decision-makers.
+Incorporate Large Language Models (LLMs) to generate intuitive reports and derive deeper insights from weather data, enhancing decision-making through easy-to-understand narratives.
 
-#### 7. 🔁 Automated Data Management:
+#### 🔁 **7. Fully Automated Data Management**
 
-The entire pipeline is automated, allowing for continuous updates, error handling, and scalability, ensuring that the system can handle a large volume of weather data efficiently.
-
----
-
-## 📁 Repository Structure:
-
-```bash
-  .
-  ├── Data Fetch
-  │   └── fetch_data.py
-  │─ Grafana
-  │   └── data_schema.json
-  │─ Training
-  │   └── airqualityprediction.ipynb
-  ├── Images
-  ├── Lambda_function
-  │   └── data_transformation.py
-  ├── README.md
-  ├── Report-Generation
-  │   └── llm.py
-  └── datasets
-      ├── countries.csv
-      └── data_schema.json
-```
+Automate the entire pipeline for continuous updates, robust error handling, and seamless scalability, ensuring efficient processing of high-volume weather data.
 
 ---
 
@@ -112,6 +89,28 @@ The following AWS services are used in the architecture:
   <source media="(prefers-color-scheme: light)" srcset="Images/Architecture-light.png">
   <img alt="Architecture Diagram" src="Images/Architecture-light.png">
 </picture>
+
+---
+
+## 📁 Repository Structure:
+
+```bash
+  .
+  ├── Data_ingestion
+  │   └── data_ingestion.py
+  │─ Grafana
+  │   └── data_schema.json
+  │─ Training
+  │   └── airqualityprediction.ipynb
+  ├── Images
+  ├── Lambda_function
+  │   └── data_transformation.py
+  ├── LLM_reporting
+  │   └── report_generation.py
+  └── datasets
+      ├── countries.csv
+      └── data_schema.json
+```
 
 ---
 
