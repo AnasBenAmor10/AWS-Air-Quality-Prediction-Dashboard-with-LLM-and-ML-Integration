@@ -1,8 +1,8 @@
-# 🌎 AWS Real time Air Quality Visualization, prediction and LLM reporting
+# 🌬️ AWS Real-Time Air Quality Monitoring, Prediction, and LLM-Enhanced Reporting
 
-## 📄 Description
+## 📊 Description
 
-This cloud-based solution monitors, analyzes, forecasts air quality and generates LLM-powered reports using real-time and historical data from the OpenWeather Air Pollution API. It empowers timely interventions, promotes cleaner practices, and raises awareness, contributing to improved public health, reduced pollution, and sustainable urban development.
+This cloud-driven solution leverages real-time and historical data from the OpenWeather Air Pollution API to monitor, analyze, and forecast air quality. By generating AI-powered reports, it supports timely decision-making, encourages eco-friendly practices, and fosters public awareness—contributing to healthier communities, lower pollution levels, and sustainable urban growth.
 
 ## 📑 Table of Contents
 
@@ -29,9 +29,9 @@ This cloud-based solution monitors, analyzes, forecasts air quality and generate
 
 ---
 
-## 📌 Overview
+## 📈 Overview
 
-This project is designed to collect, process, and visualize real-time weather data by leveraging AWS services, OpenWeather API, and machine learning tools. The pipeline automates the retrieval of weather data, stores it efficiently in the cloud, processes it for analytics, and makes it accessible for real-time visualization and predictive analysis.
+This project harnesses AWS services, the OpenWeather API, and machine learning tools to collect, process, and visualize real-time air quality data. The solution automates data retrieval, ensures efficient cloud storage, and processes the data for insightful analytics, enabling real-time visualization and accurate predictive analysis.
 
 ---
 
